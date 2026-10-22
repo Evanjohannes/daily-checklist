@@ -58,7 +58,7 @@ function Check({ on, onClick, label }: { on: boolean; onClick: () => void; label
   );
 }
 
-export default function Home() {
+function Home() {
   const router = useRouter();
   const [ready, setReady] = useState(false);
   const [now, setNow] = useState(new Date());
@@ -520,4 +520,12 @@ export default function Home() {
       </div>
     </main>
   );
+
+}
+
+export default function Page() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return <p style={{ padding: 24 }}>Loading...</p>;
+  return <Home />;
 }
